@@ -1,8 +1,15 @@
-include: package:flint/analysis_options.flutter.yaml
-analyzer:
-  errors:
-    unused_result: ignore
-
+include: package:very_good_analysis/analysis_options.7.0.0.yaml
 linter:
   rules:
-    - use_key_in_widget_constructors
+    public_member_api_docs: false
+    always_use_package_imports: false
+    lines_longer_than_80_chars: false
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/*.style.dart"
+  errors:
+    invalid_annotation_target: ignore
+  

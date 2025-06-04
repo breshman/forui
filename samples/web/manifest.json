@@ -1,11 +1,11 @@
 {
-    "name": "web",
-    "short_name": "web",
+    "name": "forui_samples",
+    "short_name": "forui_samples",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Samples for the Forui website",
+    "description": "A new Flutter project.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

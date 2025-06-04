@@ -9,7 +9,11 @@ import 'package:forui_samples/sample.dart';
 class PaginationPage extends StatefulSample {
   final String controller;
 
-  PaginationPage({@queryParam super.theme, @queryParam super.maxWidth = 600, @queryParam this.controller = 'default'});
+  PaginationPage({
+    @queryParam super.theme,
+    @queryParam super.maxWidth = 600,
+    @queryParam this.controller = 'default',
+  });
 
   @override
   State<PaginationPage> createState() => _PaginationPageState();
@@ -53,13 +57,18 @@ class _PaginationPageState extends StatefulSampleState<PaginationPage> {
 
 @RoutePage()
 class PaginationCustomIconPage extends StatefulSample {
-  PaginationCustomIconPage({@queryParam super.theme, @queryParam super.maxWidth = 400});
+  PaginationCustomIconPage({
+    @queryParam super.theme,
+    @queryParam super.maxWidth = 400,
+  });
 
   @override
-  State<PaginationCustomIconPage> createState() => _PaginationCustomIconPageState();
+  State<PaginationCustomIconPage> createState() =>
+      _PaginationCustomIconPageState();
 }
 
-class _PaginationCustomIconPageState extends StatefulSampleState<PaginationCustomIconPage> {
+class _PaginationCustomIconPageState
+    extends StatefulSampleState<PaginationCustomIconPage> {
   late final FPaginationController _controller;
 
   @override
@@ -83,7 +92,10 @@ class _PaginationCustomIconPageState extends StatefulSampleState<PaginationCusto
               child: FButton.icon(
                 style: FButtonStyle.ghost,
                 onPress: _controller.next,
-                child: IconTheme(data: style.itemIconStyle.resolve({}), child: const Icon(FIcons.bird)),
+                child: IconTheme(
+                  data: style.itemIconStyle.resolve({}),
+                  child: const Icon(FIcons.bird),
+                ),
               ),
             ),
           ),
@@ -94,7 +106,10 @@ class _PaginationCustomIconPageState extends StatefulSampleState<PaginationCusto
               child: FButton.icon(
                 style: FButtonStyle.ghost,
                 onPress: _controller.previous,
-                child: IconTheme(data: style.itemIconStyle.resolve({}), child: const Icon(FIcons.anchor)),
+                child: IconTheme(
+                  data: style.itemIconStyle.resolve({}),
+                  child: const Icon(FIcons.anchor),
+                ),
               ),
             ),
           ),
@@ -112,22 +127,28 @@ class _PaginationCustomIconPageState extends StatefulSampleState<PaginationCusto
 
 @RoutePage()
 class PaginationWithViewPage extends StatefulSample {
-  PaginationWithViewPage({@queryParam super.theme, @queryParam super.maxWidth = 400});
+  PaginationWithViewPage({
+    @queryParam super.theme,
+    @queryParam super.maxWidth = 400,
+  });
 
   @override
   State<PaginationWithViewPage> createState() => _PaginationWithViewPageState();
 }
 
-class _PaginationWithViewPageState extends StatefulSampleState<PaginationWithViewPage> {
+class _PaginationWithViewPageState
+    extends StatefulSampleState<PaginationWithViewPage> {
   int pages = 10;
   late PageController controller = PageController();
-  late FPaginationController paginationController = FPaginationController(pages: pages);
+  late FPaginationController paginationController = FPaginationController(
+    pages: pages,
+  );
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     final value = PageStorage.maybeOf(context)?.readState(context) ?? 0;
-    paginationController.page = value;
+    paginationController.page = value as int;
   }
 
   void _handlePageChange(int page) {
@@ -135,7 +156,11 @@ class _PaginationWithViewPageState extends StatefulSampleState<PaginationWithVie
     if (old case final old when old != page) {
       if (page == old! + 1 || page == old - 1) {
         setState(() {
-          controller.animateToPage(page, duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+          controller.animateToPage(
+            page,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeInOut,
+          );
         });
       } else {
         setState(() {
@@ -170,10 +195,15 @@ class _PaginationWithViewPageState extends StatefulSampleState<PaginationWithVie
               itemCount: pages,
               controller: controller,
               itemBuilder: (context, index) => ColoredBox(
-                color: index.isEven ? colors.hover(colors.primary) : colors.mutedForeground,
+                color: index.isEven
+                    ? colors.hover(colors.primary)
+                    : colors.mutedForeground,
                 child: Center(
                   child: DefaultTextStyle(
-                    style: TextStyle(fontSize: 45, color: colors.primaryForeground),
+                    style: TextStyle(
+                      fontSize: 45,
+                      color: colors.primaryForeground,
+                    ),
                     child: Text('Page ${index + 1}'),
                   ),
                 ),
@@ -181,7 +211,10 @@ class _PaginationWithViewPageState extends StatefulSampleState<PaginationWithVie
             ),
           ),
         ),
-        FPagination(controller: paginationController, onChange: _handlePageChange),
+        FPagination(
+          controller: paginationController,
+          onChange: _handlePageChange,
+        ),
       ],
     );
   }

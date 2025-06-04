@@ -38,7 +38,6 @@ dev_dependencies:
   analyzer: ^7.4.0
   build_runner: ^2.4.0
   code_builder: ^4.10.1
-  flint: ^2.8.1
   flutter_test:
     sdk: flutter
   forui_internal_gen:
@@ -46,6 +45,7 @@ dev_dependencies:
   leak_tracker_flutter_testing: any
   mockito: ^5.4.6
   path: ^1.9.1
+  very_good_analysis: ^8.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
